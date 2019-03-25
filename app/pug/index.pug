@@ -1,0 +1,135 @@
+doctype html
+head
+	meta(charset="utf-8")
+	meta(name="viewport" content="width=device-width, initial-scale=1")
+	title Owl. The game.
+	link(rel="stylesheet" href="css/mainstyle.css")
+body
+	div.test-button Go
+
+	div.container
+
+		section.preloader
+			div.preloader__spinner
+
+		section.main-menu
+			div.main-menu__wrapper
+				div.main-menu__overlay
+				nav.main-menu__links
+					div.main-menu__start-game Play
+					div.main-menu__artefacts Artefacts
+					div.main-menu__statistic Statistic
+					div.main-menu__tutorial Tutorial
+
+		section.game-levels 
+
+		section.artefacts
+
+		section.statistic
+			div.statistic__wrapper
+				div.statistic__hero
+					div.statistic__title Owl
+					div.statistic__health 
+					div.statistic__damage 
+					div.statistic__timer-bonus 
+				div.statistic__game
+					div.statistic__title Game
+					div.statistic__pure-time 
+					div.statistic__answers 
+					div.statistic__mistakes 
+					div.statistic__progress 
+					div.statistic__best-result 
+				div.statistic__buttons 
+					div.statistic__log-button Check the log<span> &rarr;</span>
+					div.statistic__restart-button Restart game
+			div.statistic__log-wrapper
+				div.statistic__title Log
+				div.output.statistic__log-output
+					div.output__note Details of each new level will be here.
+
+		section.tutorial
+			div.tutorial__wrapper
+				div.page
+					div.page__title Owl 
+					div.page__wrapper
+						div.page__text
+							| This is simple single-player game created using frontend development tools.
+							| The main goal of this progect is to gain practical developer skills.  
+							| Practice is the only way to realize how programming actually works.
+							div.page__skip-button Skip <span> &rarr;</span>
+				div.page.page_hidden_away
+					div.page__title Gameplay
+					div.page__wrapper
+						div.page__text 
+							| You have to play as Owl character defeating enemies.
+							| There are 8 levels in this game. To complite a level you have to solve simple
+							| tasks choosing the right answer in time. 
+				div.page.page_hidden_away
+					div.page__title Tasks 
+					div.page__wrapper
+						div.page__text
+							| Tasks appear every 5 seconds. Spheres with different answers will be shown next. 
+							| Just click the sphere which contains 
+							| the right answer as you suppose.  
+				div.page.page_hidden_away
+					div.page__title Damage
+					div.page__wrapper
+						div.page__text
+							| Each right answer allows you to wound the enemy depending on 
+							| the Owl's damage, and wrong answer allows the enemy to do the same. The end of 
+							| time is a wrong answer. The tasks appear until the Owl or enemy's health points are zero.
+				div.page.page_hidden_away
+					div.page__title Coins
+					div.page__wrapper
+						div.page__text
+							| If the level is successfully complited
+							| you will get several coins. Otherwise you will lose 15% of your current coins.
+							| You can spend these coins to buy some artefacts if you need it. 
+				div.page.page_hidden_away
+					div.page__title Artefacts
+					div.page__wrapper
+						div.page__text
+							| There are 3 types of artefacts: 
+							| health increase, damage increase and timer bonus. All current statistic you can see in the 
+							| Statistic section. 
+				div.page.page_hidden_away
+					div.page__title Let's play  
+					div.page__wrapper
+						div.page__text
+							| Here we go. Try it and enjoy the game. 
+							div.page__play-button Play <span> &rarr;</span>
+
+			div.tutorial__next &rarr;
+			div.tutorial__prev &larr;
+		
+		nav.control-panel
+			div.control-panel__back-button &larr;
+			div.control-panel__data
+					
+
+		section.battle-field
+			div.battle-field__wound
+			div.battle-field__wrapper
+				div.timer 
+				div.task 
+				div.spheres-area
+				div.battle-field__bars
+					div.hp-bar.hp-bar_bind_hero
+						div.hp-bar__current
+						div.hp-bar__text
+
+					div.hp-bar.hp-bar_bind_enemy
+						div.hp-bar__current
+						div.hp-bar__text 
+				
+
+		section.outro
+			div.outro__wrapper
+				div.outro__stats
+					div.outro__coins 
+				div.outro__composition
+					div.outro__stains
+					div.outro__image
+
+
+	script(src="js/mainscript.js")

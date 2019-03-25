@@ -1,0 +1,37 @@
+.control-panel {
+	transform: translateX(-105%);
+	transition: transform .5s;
+	width: 100%;
+	position: absolute;
+	background-color: #d0c7c5;
+	box-shadow: 0 3px 10px #8a8a8a;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	display: flex;
+	justify-content: space-between;
+    align-items: center;
+    height: 4.5rem;
+
+	&__back-button {
+		color: #000;
+		width: 3em;
+		padding-left: 3.75rem;
+		font: 3.125rem Exo_2;
+		line-height: 4.5rem;
+		text-transform: uppercase;
+		transition: color 1s;
+		cursor: pointer;
+		transform: translateY(-0.11em);
+
+		&:hover {
+			color: #960835;
+		}
+	}
+
+	&__data {
+		font: 2rem Exo_2;
+		padding-right: 3.75rem;
+	}
+}
+

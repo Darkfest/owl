@@ -1,0 +1,87 @@
+.artefacts {
+	@include base-section;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 1.5s, opacity 1.5s;
+	padding-top: 4.5rem;
+	overflow-y: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.artefact {
+	flex: 1 1 auto;
+	min-width: 18.75rem;
+	max-width: 28.125rem;
+	height: 9.375rem;
+	border-radius: 0.625rem;
+	overflow: hidden;
+	margin: 0.625rem;
+	background: linear-gradient(30deg, #3b3b9a, #906525);
+	font-family: Exo_2;
+	font-size: 1.5rem;
+	text-align: center;
+	color: #fff;
+	display: flex;
+	transform: translate(100%, 100%);
+	opacity: 0;
+	transition: transform .5s, opacity .5s;
+	box-shadow: 0 0.2rem 0.625rem #050444;
+
+
+	&__description {
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+
+	&__bonus {
+		line-height: 1.2em;
+	}
+
+	&__cost {
+		transition: height 1s;
+		overflow: hidden;
+	}
+
+	&__image {
+		flex: 0 0 6.25rem;
+		background: {
+			repeat: no-repeat;
+			position: center center;
+			size: contain;
+		}
+	}
+
+	&__buy {
+		flex: 0 0 4.375rem; 
+		background: {
+			image: url(../img/coins.png);
+			color: #3db33d;
+			size: 60%;
+			position: center center;
+			repeat: no-repeat;
+		}
+		border: 0.3rem solid transparent;
+		transition: border 1s, background-color 1s;
+	}
+
+	&__buy.artefact_not-sold {
+		cursor: pointer;
+		background-color: #ffaf1b;
+	}
+	
+	&_not-sold {
+		background-color: #ff9c4a;
+	}
+
+	&:hover {
+		.artefact__buy.artefact_not-sold {
+			border: 0.3rem solid white;
+		}
+	}
+}
+

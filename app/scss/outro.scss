@@ -1,0 +1,71 @@
+.outro {
+	@include base-section;
+	visibility: hidden;
+	opacity: 0; 
+	transition: visibility 1s, opacity 1s;
+	background: {
+		image: url(../img/outro_bg.jpg);
+		size: cover;
+		repeat: no-repeat;
+		position: center center;
+	}
+
+	&__wrapper {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: stretch;
+		height: 100vh;
+	}
+
+	&__stats {
+		
+	}
+
+	&__coins {
+		padding: 0.625rem;
+		text-align: center;
+		font: 2.5rem Exo_2;
+	}
+
+	&__image {
+		background: {
+			size: contain;
+			position: center center;
+			repeat: no-repeat;
+		}
+		transform: translateX(-5%);
+		transition: transform 6s linear;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+	}
+
+	&__stains {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		transform: translateX(-5%);
+		transition: transform 6s linear;
+	}
+
+	&__stain {
+		position: absolute;
+		background: {
+			position: center center;
+			size: contain;
+			repeat: no-repeat;
+			image: url(../img/blood_1.png);
+		}
+
+		opacity: 1;
+		transition: opacity 1s;
+	}
+
+	&__composition {
+		flex: 1 1 auto;
+		position: relative;
+	}
+}

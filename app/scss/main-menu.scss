@@ -1,0 +1,62 @@
+.main-menu {
+	@include base-section;
+	transition: visibility 2s, opacity 2s;
+	background-image: url(../img/main_menu_bg.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+
+	@media (orientation: portrait) {
+		background: $main_radial_bg;
+	}
+
+	&__wrapper {
+		@include full-screen;
+		position: relative;
+		display: flex;
+		align-items: stretch;
+
+		@media (orientation: portrait) {
+			justify-content: center;
+		}
+	}
+
+	&__overlay {
+		@include full-screen;
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		background: $main_radial_bg;
+		transition: opacity 1.5s, visibility 1.5s;
+	}
+
+	&__links {
+		opacity: 1;
+		visibility: visible;
+		transition: opacity .2s, visibility .2s;
+
+		position: absolute;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		perspective: 42rem;
+		perspective-origin: left;
+		width: 18.75rem;
+
+		& > div {
+			height: 1.2em;
+			text-align: center;
+			font: 2.5rem Exo_2;
+			text-transform: uppercase;
+			margin-bottom: 1rem;
+			cursor: pointer;
+			transition: color .5s, transform .5s;
+			transform-origin: 0;
+
+			&:hover {
+				color: #960835;
+			}
+		}
+	}	
+}

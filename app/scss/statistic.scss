@@ -1,0 +1,120 @@
+.statistic {
+	@include base-section;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 1.5s, opacity 1.5s;
+	padding-top: 4.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	
+	&__wrapper {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		position: absolute;
+	    top: 4.5rem;
+	    bottom: 0;
+		justify-content: center;	
+		font-family: Exo_2;
+		font-size: 1.875rem;
+		line-height: 1.2em;
+		text-align: center;
+		overflow: hidden;
+		overflow-y: auto;
+		align-items: center;
+		padding-top: 2.5rem;
+		transition: transform 1s;
+	}
+
+	&__log-wrapper {
+		padding: 0.625rem;
+		width: 100%;
+		position: absolute;
+	    top: 4.5rem;
+	    bottom: 0;
+		justify-content: center;	
+		font-family: Exo_2;
+		font-size: 1.875rem;
+		line-height: 1.2em;
+		text-align: center;
+		overflow: hidden;
+		overflow-y: auto;
+		align-items: center;
+		padding-top: 2.5rem;
+		transition: transform 1s;
+		transform: translatex(100%);
+	}
+	
+	&__title {
+		font-size: 2.5rem;
+		margin-bottom: .5em
+	}
+
+	&__hero {
+		min-width: 20rem;
+		margin-bottom: 2.5rem;
+	}
+
+	&__game {
+		min-width: 20rem;
+		margin-bottom: 2.5rem;
+	}
+
+	&__buttons {
+		width: 100%;
+	}
+
+	%statbuttons {
+		padding: .5em;
+		border-radius: 0.625rem;
+		max-width: 20rem;
+		margin: 0 auto;	
+		margin-bottom: 1rem;
+		cursor: pointer;
+		color: white;
+		background-color: #bdb4b2;
+		transition: background-color .5s;
+		box-shadow: 0 0.2rem 0.625rem #878394; 
+	}
+
+	&__log-button {
+		@extend %statbuttons;
+
+		& span {
+			padding-left: 0.625rem;
+			transition: color .5s;
+		}
+
+		&:hover span {
+			color: #960835;
+		}
+
+		&:hover {
+			background-color: #a6a2b3;
+		}
+	}
+
+
+	&__restart-button {
+		@extend %statbuttons;
+
+		&:hover {
+			background-color: #a6a2b3;
+		}
+	}
+
+}
+
+.output {
+	text-align: left;
+	width: 80%;
+	margin: 0 auto;
+
+	@media (max-width: 500px) {
+		width: 100%;
+		margin: 0;
+	}
+	
+}

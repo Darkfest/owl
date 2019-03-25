@@ -1,0 +1,76 @@
+@import "reset.scss";
+@import "test_button.scss";
+
+@font-face {
+	font-family: "Exo_2";
+	src: url("../font/Exo2ExtraLight.ttf");
+}
+@font-face {
+	font-family: "MarckScript-Regular";
+	src: url("../font/MarckScript-Regular.ttf");
+}
+
+$base_font_size: 14px;
+$base_line_height: 1.2em;
+$main_radial_bg: radial-gradient(circle, #d3bfb4 30%, #858995 100%);
+
+body, html {
+	background: $main_radial_bg;
+	font-size: $base_font_size;
+	line-height: $base_line_height;
+	min-width: 320px;
+
+	@media (min-width: 360px) and (orientation: portrait) {
+		font-size: $base_font_size + 2;
+	}
+
+	@media (min-width: 750px) and (orientation: portrait) {
+		font-size: $base_font_size + 6;
+	}
+
+	@media (min-width: 1024px) {
+		font-size: $base_font_size + 4;
+	}
+
+	@media (min-width: 1024px) and (orientation: portrait) {
+		font-size: $base_font_size + 10;
+	}
+
+	@media (min-width: 1366px) {
+		font-size: $base_font_size + 10;
+	}
+
+	@media (min-width: 2560px) {
+		font-size: $base_font_size + 20;
+	}
+}
+
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+.container {
+	width: 100%;
+	height: 100vh;
+}
+
+@mixin full-screen{
+	width: 100%;
+	height: 100vh;
+}
+
+@mixin base-section {
+	@include full-screen;
+	overflow: hidden;
+	position: absolute;
+}
+
+@import "preloader.scss";
+@import "main-menu.scss";
+@import "control-panel.scss";
+@import "game-levels.scss";
+@import "artefacts.scss";
+@import "statistic.scss";
+@import "tutorial.scss";
+@import "battle-field.scss";
+@import "outro.scss";

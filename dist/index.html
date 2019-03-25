@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owl. The game.</title>
+  <link rel="stylesheet" href="css/mainstyle.css">
+</head>
+<body>
+  <div class="test-button">Go</div>
+  <div class="container">
+    <section class="preloader">
+      <div class="preloader__spinner"></div>
+    </section>
+    <section class="main-menu">
+      <div class="main-menu__wrapper">
+        <div class="main-menu__overlay"></div>
+        <nav class="main-menu__links">
+          <div class="main-menu__start-game">Play</div>
+          <div class="main-menu__artefacts">Artefacts</div>
+          <div class="main-menu__statistic">Statistic</div>
+          <div class="main-menu__tutorial">Tutorial</div>
+        </nav>
+      </div>
+    </section>
+    <section class="game-levels"> </section>
+    <section class="artefacts"></section>
+    <section class="statistic">
+      <div class="statistic__wrapper">
+        <div class="statistic__hero">
+          <div class="statistic__title">Owl</div>
+          <div class="statistic__health"> </div>
+          <div class="statistic__damage"> </div>
+          <div class="statistic__timer-bonus"> </div>
+        </div>
+        <div class="statistic__game">
+          <div class="statistic__title">Game</div>
+          <div class="statistic__pure-time"> </div>
+          <div class="statistic__answers"> </div>
+          <div class="statistic__mistakes"> </div>
+          <div class="statistic__progress"> </div>
+          <div class="statistic__best-result"> </div>
+        </div>
+        <div class="statistic__buttons"> 
+          <div class="statistic__log-button">Check the log<span> &rarr;</span></div>
+          <div class="statistic__restart-button">Restart game</div>
+        </div>
+      </div>
+      <div class="statistic__log-wrapper">
+        <div class="statistic__title">Log</div>
+        <div class="output statistic__log-output">
+          <div class="output__note">Details of each new level will be here.</div>
+        </div>
+      </div>
+    </section>
+    <section class="tutorial">
+      <div class="tutorial__wrapper">
+        <div class="page">
+          <div class="page__title">Owl </div>
+          <div class="page__wrapper">
+            <div class="page__text">
+              This is simple single-player game created using frontend development tools.
+              The main goal of this progect is to gain practical developer skills.  
+              Practice is the only way to realize how programming actually works.
+              <div class="page__skip-button">Skip <span> &rarr;</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="page page_hidden_away">
+          <div class="page__title">Gameplay</div>
+          <div class="page__wrapper">
+            <div class="page__text">
+               You have to play as Owl character defeating enemies.
+              There are 8 levels in this game. To complite a level you have to solve simple
+              tasks choosing the right answer in time. 
+            </div>
+          </div>
+        </div>
+        <div class="page page_hidden_away">
+          <div class="page__title">Tasks </div>
+          <div class="page__wrapper">
+            <div class="page__text">
+              Tasks appear every 5 seconds. Spheres with different answers will be shown next. 
+              Just click the sphere which contains 
+              the right answer as you suppose.  
+            </div>
+          </div>
+        </div>
+        <div class="page page_hidden_away">
+          <div class="page__title">Damage</div>
+          <div class="page__wrapper">
+            <div class="page__text">
+              Each right answer allows you to wound the enemy depending on 
+              the Owl's damage, and wrong answer allows the enemy to do the same. The end of 
+              time is a wrong answer. The tasks appear until the Owl or enemy's health points are zero.
+            </div>
+          </div>
+        </div>
+        <div class="page page_hidden_away">
+          <div class="page__title">Coins</div>
+          <div class="page__wrapper">
+            <div class="page__text">
+              If the level is successfully complited
+              you will get several coins. Otherwise you will lose 15% of your current coins.
+              You can spend these coins to buy some artefacts if you need it. 
+            </div>
+          </div>
+        </div>
+        <div class="page page_hidden_away">
+          <div class="page__title">Artefacts</div>
+          <div class="page__wrapper">
+            <div class="page__text">
+              There are 3 types of artefacts: 
+              health increase, damage increase and timer bonus. All current statistic you can see in the 
+              Statistic section. 
+            </div>
+          </div>
+        </div>
+        <div class="page page_hidden_away">
+          <div class="page__title">Let's play  </div>
+          <div class="page__wrapper">
+            <div class="page__text">Here we go. Try it and enjoy the game. 
+              <div class="page__play-button">Play <span> &rarr;</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tutorial__next">&rarr;</div>
+      <div class="tutorial__prev">&larr;</div>
+    </section>
+    <nav class="control-panel">
+      <div class="control-panel__back-button">&larr;</div>
+      <div class="control-panel__data"></div>
+    </nav>
+    <section class="battle-field">
+      <div class="battle-field__wound"></div>
+      <div class="battle-field__wrapper">
+        <div class="timer"> </div>
+        <div class="task"> </div>
+        <div class="spheres-area"></div>
+        <div class="battle-field__bars">
+          <div class="hp-bar hp-bar_bind_hero">
+            <div class="hp-bar__current"></div>
+            <div class="hp-bar__text"></div>
+          </div>
+          <div class="hp-bar hp-bar_bind_enemy">
+            <div class="hp-bar__current"></div>
+            <div class="hp-bar__text"> </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="outro">
+      <div class="outro__wrapper">
+        <div class="outro__stats">
+          <div class="outro__coins"> </div>
+        </div>
+        <div class="outro__composition">
+          <div class="outro__stains"></div>
+          <div class="outro__image"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="js/mainscript.js"></script>
+</body>

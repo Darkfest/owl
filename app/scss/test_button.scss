@@ -1,0 +1,26 @@
+.test-button {
+	display: none;
+	position: fixed;
+	width: 150px;
+	height: 150px;
+	border-radius: 15px;
+	border: 2px solid crimson;
+	background-color: black;
+	text-align: center;
+	line-height: 146px;
+	font-size: 50px;
+	color: #777;
+	font-family: fantasy;
+	right: 10px;
+	bottom: 10px;
+	transition: color .5s, opacity .5s, background-color .5s;
+	opacity: .5;
+	cursor: pointer;
+	z-index: 999;
+
+	&:hover {
+		background-color: yellow;
+		color: crimson;
+		opacity: 1;
+	}
+}
