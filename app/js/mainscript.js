@@ -360,7 +360,6 @@ const preloader = {
 	container: gimme(".preloader"),
 	imagesToLoad: [
 		"main_menu_bg.png",
-		"bg.png",
 		"outro_bg.jpg",
 
 		"artefact_damage.png",

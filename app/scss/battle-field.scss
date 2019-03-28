@@ -67,7 +67,7 @@
 		position: absolute;
 		width: 80%;
 		height: 2.5rem;
-		background: linear-gradient(0deg, gray 0%, black 50%, red 100%);
+		background: linear-gradient(0deg, #824d4d 0%, black 50%, red 100%);
 		transition: width .5s;
 	}
 
@@ -125,10 +125,7 @@
 		box-sizing: content-box;
 		height: 19.375rem;
 		width: 19.375rem;
-		border-left: 0.625rem solid orange;
-		border-right: 0.625rem solid orange;
-		border-top: 0.625rem solid orange;
-		border-bottom: 0.625rem solid orange;
+		border: 0.625rem solid #ff9800;
 		border-radius: 50%;
 		top: 50%;
 		left: 50%;
@@ -154,8 +151,8 @@
 	flex: 1 1 auto;
 	width: 80vw;
 	display: grid;
-	grid-template-rows: repeat(6, 1fr);
-	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(6, 16.6%);
+	grid-template-columns: repeat(12, 8.3%);
 	justify-items: center;
 	align-items: center;
 	z-index: 1;
@@ -166,8 +163,8 @@
 	position: relative;
 	border: 1px solid black;
 	border-radius: 50%;
-	height: 6.25rem;
-	width: 6.25rem;
+	height: 6rem;
+	width: 6rem;
 	background: radial-gradient(circle, red 0%, black);
 	cursor: pointer;
 	transition: transform 1.5s;
@@ -184,8 +181,8 @@
 		width: 8.125rem;
 		border-top: 0.3rem solid #131438;
 		border-bottom: 0.3rem solid #131438;
-		border-left: 0.3rem solid transparent;
-		border-right: 0.3rem solid transparent;
+		border-left: 1px solid transparent;
+		border-right: 1px solid transparent;
 		border-radius: 50%;
 		top: 50%;
 		left: 50%;
@@ -201,10 +198,7 @@
 		box-sizing: content-box;
 		height: 6.875rem;
 		width: 6.875rem;
-		border-left: 0.3rem solid orange;
-		border-right: 0.3rem solid orange;
-		border-top: 0.3rem solid orange;
-		border-bottom: 0.3rem solid orange;
+		border: 0.3rem solid orange;
 		border-radius: 50%;
 		top: 50%;
 		left: 50%;
@@ -217,15 +211,15 @@
 		font-size: 2rem;
 		font-weight: bold;
 		color: white;
-		line-height: 6.25rem;
+		line-height: 6rem;
 		text-align: center;
 		cursor: pointer;
 	}
 
 	&__impulse {
 		border-radius: 50%;
-		height: 6.25rem;
-		width: 6.25rem;
+		height: 6rem;
+		width: 6rem;
 		position: absolute;
 		top: 50%;
 		left: 50%;

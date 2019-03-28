@@ -2,6 +2,7 @@ const 	gulp 			= require("gulp"),
 		pug 			= require("gulp-pug"),
 		browserSync 	= require("browser-sync").create(),
 		sass			= require("gulp-sass"),
+		autoprefixer	= require("gulp-autoprefixer"),
 		babel			= require("gulp-babel");
 
 gulp.task("html", (done) => {
@@ -14,6 +15,10 @@ gulp.task("html", (done) => {
 gulp.task("css", (done) => {
 	gulp.src("./app/scss/mainstyle.scss")
 	.pipe(sass().on("error", (e)=>{console.log(e.toString());}))
+	.pipe(autoprefixer({
+		browsers: ["last 3 versions"],
+		cascase: false
+	}))
 	.pipe(gulp.dest("./dist/css/"));
 	done();
 });

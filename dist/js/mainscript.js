@@ -250,7 +250,7 @@ var saves = {
 };
 var preloader = {
   container: gimme(".preloader"),
-  imagesToLoad: ["main_menu_bg.png", "bg.png", "outro_bg.jpg", "artefact_damage.png", "artefact_health.png", "artefact_timer.png", "artefact_health_damage.png", "blood_1.png", "coins.png", "take_damage.png", "cobra.png", "scorpion.png", "werewolf.png", "cerberus.png", "phenix.png", "dragon.png", "gryphon.png", "manticore.png", "owl_outro.png", "cobra_outro.png", "scorpion_outro.png", "werewolf_outro.png", "cerberus_outro.png", "phenix_outro.png", "dragon_outro.png", "gryphon_outro.png", "manticore_outro.png"],
+  imagesToLoad: ["main_menu_bg.png", "outro_bg.jpg", "artefact_damage.png", "artefact_health.png", "artefact_timer.png", "artefact_health_damage.png", "blood_1.png", "coins.png", "take_damage.png", "cobra.png", "scorpion.png", "werewolf.png", "cerberus.png", "phenix.png", "dragon.png", "gryphon.png", "manticore.png", "owl_outro.png", "cobra_outro.png", "scorpion_outro.png", "werewolf_outro.png", "cerberus_outro.png", "phenix_outro.png", "dragon_outro.png", "gryphon_outro.png", "manticore_outro.png"],
   loadResources: function loadResources() {
     var _this3 = this;
 
