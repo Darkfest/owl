@@ -8,11 +8,12 @@ function gimme(selector, all) {
 /*# ========================================== Options ==========================================
 ### 1) shuffle(arr)
 ### 2) randNum(min, max, notThese)
-### 3) persFromNum(pers, num)
-### 4) saveGame(name, saveObj, days)
-### 5) getSave(name)
-### 6) Prompt(message, handler)
-### 7) Alert(message)
+### 3) percFromNum(perc, num)
+### 4) numAsPercFrom(num, full)
+### 5) saveGame(name, saveObj, days)
+### 6) getSave(name)
+### 7) Prompt(message, handler)
+### 8) Alert(message)
 #*/
 
 const options = {
@@ -70,10 +71,13 @@ const options = {
 
 	
 
-	persFromNum: function(pers, num) {
-		return Math.round(num * pers / 100);
+	percFromNum: function(perc, num) {
+		return Math.round(num * perc / 100);
 	},
 
+	numAsPercFrom: function(num, full) {
+		return Math.round(num / full * 100);
+	},
 	
 	saveGame: function(name, saveObj, days) {
 		let saveStr = JSON.stringify(saveObj),
@@ -358,6 +362,7 @@ const saves = {
 
 const preloader = {
 	container: gimme(".preloader"),
+	progress: gimme(".preloader__progress"),
 	imagesToLoad: [
 		"main_menu_bg.png",
 		"outro_bg.jpg",
@@ -396,6 +401,8 @@ const preloader = {
 
 		let handler = () => {
 			imagesLoaded++; 
+			let loadPercent = Math.round(options.numAsPercFrom(imagesLoaded, imageAmount));
+			this.progress.innerHTML = `${loadPercent}%`;
 			if (imagesLoaded >= imageAmount) {
 				setTimeout(()=>{
 					if (!this.container.classList.contains("preloader_hidden")) this.container.classList.add("preloader_hidden");
@@ -1216,7 +1223,7 @@ hero.add = function() {
 hero.loseCoins = function() {
 	if (this.coins === 0) return 0;
 
-	let loss = options.persFromNum(15, this.coins);
+	let loss = options.percFromNum(15, this.coins);
 	if (loss === 0) loss = 1;
 	this.coins -= loss;
 
@@ -1782,9 +1789,9 @@ const animations = {
 	stainGenerator: function(amount, container) {
 		container.innerHTML = "";
 		let biggerSize = container.offsetWidth >= container.offsetHeight ? container.offsetWidth : container.offsetHeight,
-			stainSize = options.persFromNum(15, biggerSize),
-			stainBigest = options.persFromNum(130, stainSize),
-			stainLeast = options.persFromNum(70, stainSize),
+			stainSize = options.percFromNum(15, biggerSize),
+			stainBigest = options.percFromNum(130, stainSize),
+			stainLeast = options.percFromNum(70, stainSize),
 			stains = [];
 
 		for (let i = 0; i < amount; i++) {

@@ -15,11 +15,12 @@ function gimme(selector, all) {
 /*# ========================================== Options ==========================================
 ### 1) shuffle(arr)
 ### 2) randNum(min, max, notThese)
-### 3) persFromNum(pers, num)
-### 4) saveGame(name, saveObj, days)
-### 5) getSave(name)
-### 6) Prompt(message, handler)
-### 7) Alert(message)
+### 3) percFromNum(perc, num)
+### 4) numAsPercFrom(num, full)
+### 5) saveGame(name, saveObj, days)
+### 6) getSave(name)
+### 7) Prompt(message, handler)
+### 8) Alert(message)
 #*/
 
 
@@ -74,8 +75,11 @@ var options = {
 
     return result;
   },
-  persFromNum: function persFromNum(pers, num) {
-    return Math.round(num * pers / 100);
+  percFromNum: function percFromNum(perc, num) {
+    return Math.round(num * perc / 100);
+  },
+  numAsPercFrom: function numAsPercFrom(num, full) {
+    return Math.round(num / full * 100);
   },
   saveGame: function saveGame(name, saveObj, days) {
     var saveStr = JSON.stringify(saveObj),
@@ -250,6 +254,7 @@ var saves = {
 };
 var preloader = {
   container: gimme(".preloader"),
+  progress: gimme(".preloader__progress"),
   imagesToLoad: ["main_menu_bg.png", "outro_bg.jpg", "artefact_damage.png", "artefact_health.png", "artefact_timer.png", "artefact_health_damage.png", "blood_1.png", "coins.png", "take_damage.png", "cobra.png", "scorpion.png", "werewolf.png", "cerberus.png", "phenix.png", "dragon.png", "gryphon.png", "manticore.png", "owl_outro.png", "cobra_outro.png", "scorpion_outro.png", "werewolf_outro.png", "cerberus_outro.png", "phenix_outro.png", "dragon_outro.png", "gryphon_outro.png", "manticore_outro.png"],
   loadResources: function loadResources() {
     var _this3 = this;
@@ -259,6 +264,8 @@ var preloader = {
 
     var handler = function handler() {
       imagesLoaded++;
+      var loadPercent = Math.round(options.numAsPercFrom(imagesLoaded, imageAmount));
+      _this3.progress.innerHTML = "".concat(loadPercent, "%");
 
       if (imagesLoaded >= imageAmount) {
         setTimeout(function () {
@@ -964,7 +971,7 @@ hero.add = function () {
 
 hero.loseCoins = function () {
   if (this.coins === 0) return 0;
-  var loss = options.persFromNum(15, this.coins);
+  var loss = options.percFromNum(15, this.coins);
   if (loss === 0) loss = 1;
   this.coins -= loss;
   return loss;
@@ -1470,9 +1477,9 @@ var animations = {
   stainGenerator: function stainGenerator(amount, container) {
     container.innerHTML = "";
     var biggerSize = container.offsetWidth >= container.offsetHeight ? container.offsetWidth : container.offsetHeight,
-        stainSize = options.persFromNum(15, biggerSize),
-        stainBigest = options.persFromNum(130, stainSize),
-        stainLeast = options.persFromNum(70, stainSize),
+        stainSize = options.percFromNum(15, biggerSize),
+        stainBigest = options.percFromNum(130, stainSize),
+        stainLeast = options.percFromNum(70, stainSize),
         stains = [];
 
     for (var _i3 = 0; _i3 < amount; _i3++) {

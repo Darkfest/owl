@@ -14,14 +14,30 @@ $spinner_size: 20rem;
 	background: radial-gradient(circle, #d3bfb4 30%, #858995 100%);
 
 	&__spinner {
-		margin: auto;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		width: $spinner_size;
 		height: $spinner_size;
 
 		border-radius: 50%;
-		border-right: 3px solid black;
+		border-right: 3px solid #808080;
 
 		animation: rotate_spinner 3s linear infinite;
+	}
+
+	&__progress {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: 1rem;
+		font: {
+			size: 3rem;
+			family: calibri, sans-serif;
+		};
+		color: #808080;
 	}
 
 	&_hidden {
@@ -32,10 +48,10 @@ $spinner_size: 20rem;
 
 @keyframes rotate_spinner {
 	0% {
-		transform: rotate(0deg);
+		transform: translate(-50%, -50%) rotate(0deg);
 	}
 
 	100% {
-		transform: rotate(360deg);
+		transform: translate(-50%, -50%) rotate(360deg);
 	}
 }
