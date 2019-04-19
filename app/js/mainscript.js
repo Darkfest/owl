@@ -5,18 +5,57 @@ function gimme(selector, all) {
 	return document.querySelector(selector);
 }
 
-/*# ========================================== Options ==========================================
-### 1) shuffle(arr)
-### 2) randNum(min, max, notThese)
-### 3) percFromNum(perc, num)
-### 4) numAsPercFrom(num, full)
-### 5) saveGame(name, saveObj, days)
-### 6) getSave(name)
-### 7) Prompt(message, handler)
-### 8) Alert(message)
-#*/
+
+
+/* ========================================== Options ========================================== */
 
 const options = {
+	fullScreenMode: {
+		triggeredOnce: false,
+		setControl: function(button) {
+			button.addEventListener("click", this.toggleMode.bind(this));
+		},
+		toggleMode: function() {
+			if (this.isActive()) {
+				this.off();
+			} else {
+				this.on();
+			}
+		},
+		on: function() {
+			document.documentElement.requestFullscreen();
+		},
+		off: function() {
+			document.exitFullscreen();
+		},
+		isActive: function() {
+			return document.fullscreenElement ? true : false;
+
+		},
+		setOptionalPolyfill: function() {
+			if (!Element.prototype.requestFullscreen) {
+				Element.prototype.requestFullscreen = Element.prototype.mozRequestFullscreen || Element.prototype.webkitRequestFullscreen || Element.prototype.msRequestFullscreen;
+			}
+
+			if (!document.exitFullscreen) {
+				document.exitFullscreen = document.mozExitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+			}
+
+			if (!("fullscreenElement" in document)) {
+				Object.defineProperty(document, 'fullscreenElement', {
+					get: function() {
+						return document.mozFullScreenElement || document.msFullscreenElement || document.webkitFullscreenElement;
+					}
+				});
+
+				Object.defineProperty(document, 'fullscreenEnabled', {
+					get: function() {
+						return document.mozFullScreenEnabled || document.msFullscreenEnabled || document.webkitFullscreenEnabled;
+					}
+				});
+			}
+		}
+	},
 	shuffle: function(arr) {
 		let randIndex, tempSlot, length = arr.length;
 		for (let i = length - 1; i > 0; i--) {
@@ -440,6 +479,7 @@ const mainMenu = {
 	container: gimme(".main-menu"),
 	overlay: gimme(".main-menu__overlay"),
 	
+	fullScreenButton: gimme(".main-menu__screen-control"),
 	links: {
 		clickable: true,
 		container: gimme(".main-menu__links"),
@@ -448,6 +488,9 @@ const mainMenu = {
 		settings: gimme(".main-menu__settings"),
 	},
 	listenToEvents: function() {
+
+		options.fullScreenMode.setOptionalPolyfill();
+		options.fullScreenMode.setControl(this.fullScreenButton);
 		
 		this.links.container.addEventListener("click", (e)=>{
 			if(!this.links.clickable) return;
@@ -788,10 +831,18 @@ const tutorial = {
 		});
 
 		this.controls.skip.addEventListener("click", ()=>{
+			if (!options.fullScreenMode.triggeredOnce) {
+				options.fullScreenMode.triggeredOnce = true;
+				options.fullScreenMode.on();
+			}
 			animations.toMainMenu();
 		});
 
 		this.controls.play.addEventListener("click", ()=>{
+			if (!options.fullScreenMode.triggeredOnce) {
+				options.fullScreenMode.triggeredOnce = true;
+				options.fullScreenMode.on();
+			}
 			animations.toMainMenu();
 		});
 	}
@@ -1630,6 +1681,9 @@ const animations = {
 		mainMenu.links.container.style.opacity = "1";
 		mainMenu.links.container.style.visibility = "visible";
 
+		mainMenu.fullScreenButton.style.visibility = "visible";
+		mainMenu.fullScreenButton.style.opacity = "";
+
 		mainMenu.links.clickable = true;
 
 		let time = 150,
@@ -1643,6 +1697,8 @@ const animations = {
 		});
 	},
 	hideLinks: function() {
+		mainMenu.fullScreenButton.style.visibility = "hidden";
+		mainMenu.fullScreenButton.style.opacity = "0";
 		let time = -150,
 			items = Array.prototype.slice.call(mainMenu.links.container.children),
 			final = 150 * items.length;

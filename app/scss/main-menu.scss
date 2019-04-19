@@ -59,4 +59,30 @@
 			}
 		}
 	}	
+
+	&__screen-control {
+		cursor: pointer;
+		position: absolute;
+		width: 7rem;
+		height: 7rem;
+		background: {
+			repeat: no-repeat;
+			image: url(../img/full_screen_icon.png);
+			position: center center;
+			size: contain;
+		};
+		opacity: .5;
+		bottom: 5%;
+		right: 5%;
+		transform: rotate(0deg);
+		transition: transform .5s, opacity .5s, visibility .5s;
+		
+		&:hover {
+			opacity: 1;
+		}
+
+		@media (orientation: portrait) {
+			transform: rotate(90deg);
+		}
+	}
 }

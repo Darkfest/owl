@@ -12,19 +12,54 @@ function gimme(selector, all) {
   if (all === "all") return Array.prototype.slice.call(document.querySelectorAll(selector));
   return document.querySelector(selector);
 }
-/*# ========================================== Options ==========================================
-### 1) shuffle(arr)
-### 2) randNum(min, max, notThese)
-### 3) percFromNum(perc, num)
-### 4) numAsPercFrom(num, full)
-### 5) saveGame(name, saveObj, days)
-### 6) getSave(name)
-### 7) Prompt(message, handler)
-### 8) Alert(message)
-#*/
+/* ========================================== Options ========================================== */
 
 
 var options = {
+  fullScreenMode: {
+    triggeredOnce: false,
+    setControl: function setControl(button) {
+      button.addEventListener("click", this.toggleMode.bind(this));
+    },
+    toggleMode: function toggleMode() {
+      if (this.isActive()) {
+        this.off();
+      } else {
+        this.on();
+      }
+    },
+    on: function on() {
+      document.documentElement.requestFullscreen();
+    },
+    off: function off() {
+      document.exitFullscreen();
+    },
+    isActive: function isActive() {
+      return document.fullscreenElement ? true : false;
+    },
+    setOptionalPolyfill: function setOptionalPolyfill() {
+      if (!Element.prototype.requestFullscreen) {
+        Element.prototype.requestFullscreen = Element.prototype.mozRequestFullscreen || Element.prototype.webkitRequestFullscreen || Element.prototype.msRequestFullscreen;
+      }
+
+      if (!document.exitFullscreen) {
+        document.exitFullscreen = document.mozExitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+      }
+
+      if (!("fullscreenElement" in document)) {
+        Object.defineProperty(document, 'fullscreenElement', {
+          get: function get() {
+            return document.mozFullScreenElement || document.msFullscreenElement || document.webkitFullscreenElement;
+          }
+        });
+        Object.defineProperty(document, 'fullscreenEnabled', {
+          get: function get() {
+            return document.mozFullScreenEnabled || document.msFullscreenEnabled || document.webkitFullscreenEnabled;
+          }
+        });
+      }
+    }
+  },
   shuffle: function shuffle(arr) {
     var randIndex,
         tempSlot,
@@ -300,6 +335,7 @@ var mainMenu = {
   location: "tutorial",
   container: gimme(".main-menu"),
   overlay: gimme(".main-menu__overlay"),
+  fullScreenButton: gimme(".main-menu__screen-control"),
   links: {
     clickable: true,
     container: gimme(".main-menu__links"),
@@ -310,6 +346,8 @@ var mainMenu = {
   listenToEvents: function listenToEvents() {
     var _this4 = this;
 
+    options.fullScreenMode.setOptionalPolyfill();
+    options.fullScreenMode.setControl(this.fullScreenButton);
     this.links.container.addEventListener("click", function (e) {
       if (!_this4.links.clickable) return;
 
@@ -638,9 +676,19 @@ var tutorial = {
       _this8.pages[_this8.currentPage].classList.remove("page_hidden_zoom");
     });
     this.controls.skip.addEventListener("click", function () {
+      if (!options.fullScreenMode.triggeredOnce) {
+        options.fullScreenMode.triggeredOnce = true;
+        options.fullScreenMode.on();
+      }
+
       animations.toMainMenu();
     });
     this.controls.play.addEventListener("click", function () {
+      if (!options.fullScreenMode.triggeredOnce) {
+        options.fullScreenMode.triggeredOnce = true;
+        options.fullScreenMode.on();
+      }
+
       animations.toMainMenu();
     });
   }
@@ -1337,6 +1385,8 @@ var animations = {
   showLinks: function showLinks() {
     mainMenu.links.container.style.opacity = "1";
     mainMenu.links.container.style.visibility = "visible";
+    mainMenu.fullScreenButton.style.visibility = "visible";
+    mainMenu.fullScreenButton.style.opacity = "";
     mainMenu.links.clickable = true;
     var time = 150,
         items = Array.prototype.slice.call(mainMenu.links.container.children),
@@ -1348,6 +1398,8 @@ var animations = {
     });
   },
   hideLinks: function hideLinks() {
+    mainMenu.fullScreenButton.style.visibility = "hidden";
+    mainMenu.fullScreenButton.style.opacity = "0";
     var time = -150,
         items = Array.prototype.slice.call(mainMenu.links.container.children),
         final = 150 * items.length;

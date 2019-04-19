@@ -253,6 +253,33 @@ body, html {
               transform-origin: 0; }
       .main-menu__links > div:hover {
         color: #960835; }
+  .main-menu__screen-control {
+    cursor: pointer;
+    position: absolute;
+    width: 7rem;
+    height: 7rem;
+    background-repeat: no-repeat;
+    background-image: url(../img/full_screen_icon.png);
+    background-position: center center;
+    background-size: contain;
+    opacity: .5;
+    bottom: 5%;
+    right: 5%;
+    -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-transition: opacity .5s, visibility .5s, -webkit-transform .5s;
+    transition: opacity .5s, visibility .5s, -webkit-transform .5s;
+    -o-transition: transform .5s, opacity .5s, visibility .5s;
+    transition: transform .5s, opacity .5s, visibility .5s;
+    transition: transform .5s, opacity .5s, visibility .5s, -webkit-transform .5s; }
+    .main-menu__screen-control:hover {
+      opacity: 1; }
+    @media (orientation: portrait) {
+      .main-menu__screen-control {
+        -webkit-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+                transform: rotate(90deg); } }
 
 .control-panel {
   -webkit-transform: translateX(-105%);
